@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OLYMPICS PRO</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nerko+One&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="main">
+        <div class="heading_box">
+            <img src="i.png" class="ch_logo">
+            <div class="timer" id="ttttimer">0:00</div>
+        </div>
+
+        <div class="sec_bar" id="hclc"></div>
+        <div class="bc_ch">
+            <div class="home_useless">
+                <div class="home_name" id="hhN">UNK</div>
+            </div>
+            <div class="home_goal" id="hg">0</div>
+            <div class="away_goal" id="ag">0</div>
+            <div class="useless">
+                <div class="away_name" id="aaN">UNK</div>
+            </div>
+        </div>
+        <div class="sec_bar" id="aclc"></div>
+        <div class="extratimer" id="exxt">+7</div>
+    </div>
+    <br><br>
+    <div class="timDiv">
+        <div class="tminn">
+            <label for="timMin" class="jLab">Minutes</label>
+            <input type="number" class="minSec" id="timMin">
+        </div>
+        <div class="timsecc">
+            <label for="timSec" class="jLab">Seconds</label>
+            <input type="number" class="minSec" id="timSec">
+        </div>
+    </div>
+    <div class="NDiv">
+        <div class="tminn">
+            <label for="hGoal" class="jLab">Home Goal</label>
+            <input type="number" class="minSec" id="hGoal">
+        </div>
+        <div class="timsecc">
+            <label for="aGoal" class="jLab">Away Goal</label>
+            <input type="number" class="minSec" id="aGoal">
+        </div>
+    </div>
+    <div class="NDiv">
+        <div class="ht">
+            <label for="hName" class="jLab">Home</label>
+            <input type="text" id="hName" class="namer">
+        </div>
+        <div class="at">
+            <label for="aName" class="jLab">Away</label>
+            <input type="text" id="aName" class="namer">
+        </div>
+    </div>
+    <div class="NDiv">
+        <div class="ht">
+            <label for="hColor" class="jLab">Time TT Color</label>
+            <input type="text" id="hColor" class="Colorr">
+        </div>
+        <div class="at">
+            <label for="aColor" class="jLab">Time BG Color</label>
+            <input type="text" id="aColor" class="Colorr">
+        </div>
+    </div>
+    <div class="NDiv">
+        <div class="ht">
+            <label for="hLogo" class="jLab">Home Color</label>
+            <input type="text" id="hLogo" class="Logo">
+        </div>
+        <div class="at">
+            <label for="aLogo" class="jLab">Away Color</label>
+            <input type="text" id="aLogo" class="Logo">
+        </div>
+    </div>
+    <div class="mBtn">
+        <button id="sBtn" class="Btnn">Start</button>
+        <button id="spBtn" class="Btnn">Stop</button>
+        <button id="rBtn" class="Btnn">Reset</button>
+        <div class="lal">Manual</div>
+        <div class="divCAS" id="adiv">
+            <div class="circle"></div>
+            <input type="checkbox" class="cAS" id="autoSwitcher">
+        </div>
+        <div class="lal">Auto</div>
+    </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
