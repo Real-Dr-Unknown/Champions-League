@@ -1,36 +1,28 @@
 
 let configData = {
+    "home_logo": "",
+    "away_logo": "",
     "timer_property": "",
     "home": "",
     "away": "",
     "home_color": "",
     "away_color": "",
-    "home_goal": "",
-    "away_goal": "",
+    "home_Goals": "",
+    "away_Goals": "",
+    "home_text_color": "",
+    "away_text_color": "",
+    "score_text_color": "",
+    "score_background_color": "",
     "timer_text_color": "",
     "timer_background_color": "",
-    "clock_start_time": "",
-    "minute": "",
-    "second": ""
+    "sTimeMin": "",
+    "sTimeHour": ""
 }
 
 function updateConfig(newData) {
     configData = { ...configData, ...newData };
     console.log(configData)
 }
-
-function converttime(tiptop) {
-
-    let tip = tiptop / 1000
-    let tip_min = Math.floor(tip / 60);
-    let tip_sec = Math.floor(tip % 60);
-
-    console.log(tip_min, tip_sec, tiptop)
-    min = min + tip_min
-    sec = sec + tip_sec
-}
-
-
 
 
 let start = document.getElementById('sBtn')
@@ -48,6 +40,10 @@ let min = 0;
 let temp = false
 let hTOver = false;
 let aT = true
+let tStartHour = null;
+let tStartMin = null;
+let aRun = false;
+
 
 function minsetter() {
     min = document.getElementById('timMin').value
@@ -139,6 +135,27 @@ function agsetter() {
 }
 
 
+function autoHoursetter() {
+    aHour = document.getElementById('autoHour').value
+    updateConfig({ sTimeHour: document.getElementById('autoHour').value });
+    tStartHour = Number(aHour)
+    if (tStartHour !== null && tStartMin !== null && !isRunning && !aRun) {
+        ajC = setInterval(astr, 15000)
+        aRun = true
+    }
+}
+
+function autoMinsetter() {
+    aMin = document.getElementById('autoMin').value
+    updateConfig({ sTimeMin: document.getElementById('autoMin').value });
+    tStartMin = Number(aMin)
+    if (tStartHour !== null && tStartMin !== null && !isRunning && !aRun) {
+        ajC = setInterval(astr, 15000)
+        aRun = true
+    }
+}
+
+
 function autooS() {
     if (aT) {
         aT = false
@@ -168,6 +185,8 @@ coppy.onclick = function generateShareableLink() {
 
 document.getElementById('timMin').addEventListener("input", minsetter)
 document.getElementById('timSec').addEventListener("input", secsetter)
+document.getElementById('autoMin').addEventListener("input", autoMinsetter)
+document.getElementById('autoHour').addEventListener("input", autoHoursetter)
 document.getElementById('hName').addEventListener("input", hsetter)
 document.getElementById('aName').addEventListener("input", asetter)
 document.getElementById('hGoal').addEventListener("input", hgsetter)
@@ -200,6 +219,20 @@ async function checker() {
             isRunning = true;
             hTOver = true;
 
+        }
+    }
+}
+
+function astr() {
+    console.log("15 Sec Interval")
+    now = new Date();
+    console.log(now.getHours())
+    console.log(now.getMinutes())
+    if (now.getHours() === tStartHour && now.getMinutes() >= tStartMin) {
+        starttimer()
+        console.log("Auto Started")
+        if (now.getMinutes() > tStartMin) {
+            min = now.getMinutes() - tStartMin;
         }
     }
 }
@@ -286,6 +319,17 @@ function presetter() {
     if (configData.timer_background_color) {
         let AAAC = document.getElementById('ttttimer')
         AAAC.style.backgroundColor = configData.timer_background_color;
+    }
+
+    if (configData.sTimeHour) {
+        tStartHour = Number(configData.sTimeHour)
+        console.log(tStartHour)
+    }
+
+    if (configData.sTimeMin) {
+        tStartMin = Number(configData.sTimeMin)
+        ajC = setInterval(astr, 15000)
+        aRun = true
     }
 
     if (configData.minute) {
