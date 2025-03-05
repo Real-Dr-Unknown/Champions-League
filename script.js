@@ -269,7 +269,7 @@ function ttemer() {
             checker();
         }
         if (min == 90 && sec == 0 && aT) {
-            exx.textContent = '+8 MINS';
+            exx.textContent = '+8';
             exx.style.visibility = 'visible';
             isRunning = false;
             let tt = clearInterval(fClera)
