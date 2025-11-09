@@ -16,7 +16,9 @@ let configData = {
     "timer_text_color": "",
     "timer_background_color": "",
     "sTimeMin": "",
-    "sTimeHour": ""
+    "sTimeHour": "",
+    "minute": "",
+    "second": ""
 }
 
 function updateConfig(newData) {
@@ -226,14 +228,57 @@ async function checker() {
 function astr() {
     console.log("15 Sec Interval")
     now = new Date();
-    console.log(now.getHours())
-    console.log(now.getMinutes())
+
     if (now.getHours() === tStartHour && now.getMinutes() >= tStartMin) {
         starttimer()
-        console.log("Auto Started")
-        if (now.getMinutes() > tStartMin) {
-            min = now.getMinutes() - tStartMin;
+        if (configData.minute) {
+                
+            min = configData.minute
+            min = Number(min)
+                
+            if (sec < 10 && min < 10) {
+                clockk.textContent = '0' + min + ':' + '0' + sec;
+            }
+            if (min < 10 && sec > 9) {
+                clockk.textContent = '0' + min + ':' + sec;
+            }
+            if (min > 9 && sec < 10) {
+                clockk.textContent = min + ':' + '0' + sec;
+            }
+            if (sec > 9 && min > 9) {
+                clockk.textContent = min + ':' + sec;
+            }
         }
+        else if (now.getMinutes() > tStartMin) {
+            min = now.getMinutes() - tStartMin;
+            
+        }
+        
+        if (configData.second) {
+            
+            sec = configData.second
+            sec = Number(sec);
+            
+            if (sec > 59) {
+                document.getElementById('timSec').value = null
+                sec = 0
+                min++
+            }
+            if (sec < 10 && min < 10) {
+                clockk.textContent = '0' + min + ':' + '0' + sec;
+            }
+            if (min < 10 && sec > 9) {
+                clockk.textContent = '0' + min + ':' + sec;
+            }
+            if (min > 9 && sec < 10) {
+                clockk.textContent = min + ':' + '0' + sec;
+            }
+            if (sec > 9 && min > 9) {
+                clockk.textContent = min + ':' + sec;
+            }
+            
+        }
+        clearInterval(ajC)
     }
 }
 
@@ -332,62 +377,62 @@ function presetter() {
         aRun = true
     }
 
-    if (configData.minute) {
+    // if (configData.minute) {
 
-        min = configData.minute
-        min = Number(min)
+    //     min = configData.minute
+    //     min = Number(min)
 
-        if (sec < 10 && min < 10) {
-            clockk.textContent = '0' + min + ':' + '0' + sec;
-        }
-        if (min < 10 && sec > 9) {
-            clockk.textContent = '0' + min + ':' + sec;
-        }
-        if (min > 9 && sec < 10) {
-            clockk.textContent = min + ':' + '0' + sec;
-        }
-        if (sec > 9 && min > 9) {
-            clockk.textContent = min + ':' + sec;
-        }
-    }
+    //     if (sec < 10 && min < 10) {
+    //         clockk.textContent = '0' + min + ':' + '0' + sec;
+    //     }
+    //     if (min < 10 && sec > 9) {
+    //         clockk.textContent = '0' + min + ':' + sec;
+    //     }
+    //     if (min > 9 && sec < 10) {
+    //         clockk.textContent = min + ':' + '0' + sec;
+    //     }
+    //     if (sec > 9 && min > 9) {
+    //         clockk.textContent = min + ':' + sec;
+    //     }
+    // }
 
-    if (configData.second) {
+    // if (configData.second) {
 
-        sec = configData.second
-        sec = Number(sec);
+    //     sec = configData.second
+    //     sec = Number(sec);
 
-        if (sec > 59) {
-            document.getElementById('timSec').value = null
-            sec = 0
-            min++
-        }
-        if (sec < 10 && min < 10) {
-            clockk.textContent = '0' + min + ':' + '0' + sec;
-        }
-        if (min < 10 && sec > 9) {
-            clockk.textContent = '0' + min + ':' + sec;
-        }
-        if (min > 9 && sec < 10) {
-            clockk.textContent = min + ':' + '0' + sec;
-        }
-        if (sec > 9 && min > 9) {
-            clockk.textContent = min + ':' + sec;
-        }
-    }
+    //     if (sec > 59) {
+    //         document.getElementById('timSec').value = null
+    //         sec = 0
+    //         min++
+    //     }
+    //     if (sec < 10 && min < 10) {
+    //         clockk.textContent = '0' + min + ':' + '0' + sec;
+    //     }
+    //     if (min < 10 && sec > 9) {
+    //         clockk.textContent = '0' + min + ':' + sec;
+    //     }
+    //     if (min > 9 && sec < 10) {
+    //         clockk.textContent = min + ':' + '0' + sec;
+    //     }
+    //     if (sec > 9 && min > 9) {
+    //         clockk.textContent = min + ':' + sec;
+    //     }
+    // }
 
-    if (configData.timer_property == "start") {
-        let spend_time = Date.now() - configData.clock_start_time
-        converttime(spend_time)
-        starttimer();
-    }
+    // if (configData.timer_property == "start") {
+    //     let spend_time = Date.now() - configData.clock_start_time
+    //     converttime(spend_time)
+    //     starttimer();
+    // }
 
-    if (configData.timer_property == "stop") {
-        stopTimerr()
-    }
+    // if (configData.timer_property == "stop") {
+    //     stopTimerr()
+    // }
 
-    if (configData.timer_property == "reset") {
-        resetbutt()
-    }
+    // if (configData.timer_property == "reset") {
+    //     resetbutt()
+    // }
 
 }
 
